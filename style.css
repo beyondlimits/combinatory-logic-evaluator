@@ -1,0 +1,21 @@
+.error {
+	color: red;
+}
+
+.monospace {
+	font-family: monospace;
+}
+
+.repetition {
+	background: #CFC;
+}
+
+.template {
+	display: none;
+}
+
+.width-100 {
+	box-sizing: border-box;
+	width: 100%;
+}
+
