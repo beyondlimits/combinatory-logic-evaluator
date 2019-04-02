@@ -143,16 +143,25 @@ var CL = function(undefined){
 	// Drops parentheses from the first subterm.
 	// Example: Given a = [['S', 'K'], ['K', 'K']],
 	// a becomes ['S', 'K', ['K', 'K']] after drop.
-	function dropParentheses(a) {
-		while (isArray(a[0])) {
+	function dropParentheses(a, count) {
+		var result = 0;
+
+		while (result < count && isArray(a[0])) {
 			var b = [0, 1].concat(a[0]);
 			splice.apply(a, b);
+			++result;
 		}
+
+		return result;
 	}
 
 	// Evaluate the term using rules.
 	function evaluate(a, rules, count) {
-		dropParentheses(a);
+		var result = dropParentheses(a, count);
+
+		if (result) {
+			return result;
+		}
 
 		if (typeof count == 'undefined') {
 			count = 1 / 0;
@@ -171,16 +180,12 @@ var CL = function(undefined){
 			}
 		}
 
-		if (count > 0) {
-			if (!isArray(a[0]) && rules.hasOwnProperty(a[0])) {
-				var rule = rules[a[0]];
-				if (rewrite(a, rule[0], rule[1])) {
-					++result;
-				}
+		if (result < count && !isArray(a[0]) && rules.hasOwnProperty(a[0])) {
+			var rule = rules[a[0]];
+			if (rewrite(a, rule[0], rule[1])) {
+				++result;
 			}
 		}
-
-		//dropParentheses(a);
 
 		return result;
 	}
