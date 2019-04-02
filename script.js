@@ -65,7 +65,7 @@
 		var nodes = {};
 		nodes[s] = addStep(s);
 
-		for(var i = 0; i < 999; i++) {
+		for(var i = 0; i < 9999; i++) {
 			var sOld = s;
 			try {
 				var rule = evaluateRules(term);
