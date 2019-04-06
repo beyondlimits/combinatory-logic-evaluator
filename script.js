@@ -14,10 +14,10 @@
 		'B', 'C', 'T', 'V',
 
 		// produce little more terms than consume
-		'ι',
+		'i',
 
 		// possibly explosive (may produce a lot of terms)
-		'S', 'W', 'Y', 'U', 'M', 'ω', 'Ω'
+		'S', 'A', 'W', 'Y', 'U', 'M', 'ω', 'Ω'
 	];
 
 	// rules of substitution
@@ -25,7 +25,8 @@
 		I: ['x', 'x'],         // Identity
 		K: ['xy', 'x'],        // Kestrel
 		S: ['xyz', 'xz(yz)'],  // Starling
-		ι: ['x', 'xSK'],       // Iota
+		A: ['xyz', 'xy(xz)'],  // my own bird
+		i: ['x', 'xSK'],       // Iota
 		B: ['xyz', 'x(yz)'],   // Bluebird
 		C: ['xyz', 'xzy'],     // Cardinal
 		T: ['xy', 'yx'],       // Thrush
